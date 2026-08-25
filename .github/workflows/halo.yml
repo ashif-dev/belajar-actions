@@ -6,4 +6,16 @@ jobs:
   menyapa:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Halo, saya robot pertama Anda"
+      - name: Langkah satu
+        run: echo "Ini dikerjakan pertama"
+
+      - name: Langkah dua
+        run: echo "Ini dikerjakan kedua"
+
+      - name: Lihat kita ada di komputer apa
+        run: |
+          echo "Nama komputer: $(hostname)"
+          echo "Sistem operasi:"
+          cat /etc/os-release | head -2
+          echo "Isi folder saat ini:"
+          ls -la
