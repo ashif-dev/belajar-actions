@@ -1,0 +1,9 @@
+name: Robot Pertama
+
+on: workflow_dispatch
+
+jobs:
+  menyapa:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Halo, saya robot pertama Anda"
