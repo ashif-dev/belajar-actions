@@ -1,16 +1,17 @@
 name: Robot Pertama
 
-on: workflow_dispatch
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   menyapa:
     runs-on: ubuntu-latest
     steps:
-      - name: Sebelum mengambil kode
-        run: ls -la
+      - uses: actions/checkout@v4
 
-      - name: Ambil kode dari repositori
-        uses: actions/checkout@v4
-
-      - name: Sesudah mengambil kode
-        run: ls -la
+      - name: Info tentang pemicunya
+        run: |
+          echo "Robot ini dibangunkan oleh: ${{ github.event_name }}"
+          echo "Di branch: ${{ github.ref_name }}"
+          echo "Oleh pengguna: ${{ github.actor }}"
