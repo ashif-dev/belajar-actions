@@ -1,0 +1,23 @@
+name: Dua Job
+
+on: workflow_dispatch
+
+jobs:
+  job-pertama:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Buat sebuah file
+        run: |
+          echo "isi rahasia" > catatan.txt
+          echo "File dibuat. Isi folder sekarang:"
+          ls -la
+
+  job-kedua:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coba cari file dari job pertama
+        run: |
+          echo "Isi folder di job kedua:"
+          ls -la
+          echo "---"
+          cat catatan.txt || echo "TERNYATA TIDAK ADA. Job tidak berbagi komputer."
