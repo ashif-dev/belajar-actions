@@ -1,0 +1,15 @@
+name: Robot Bersama
+
+on:
+  workflow_call:
+
+jobs:
+  bekerja:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Kerjakan sesuatu
+        run: |
+          echo "Robot bersama sedang bekerja"
+          echo "Dipanggil oleh repo: ${{ github.repository }}"
