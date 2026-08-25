@@ -11,5 +11,5 @@ jobs:
   bekerja:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v99
+      - uses: actions/checkout@v4
       - run: echo "${{ inputs.nama-proyek }}"
