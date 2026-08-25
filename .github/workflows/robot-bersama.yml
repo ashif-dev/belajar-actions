@@ -4,38 +4,12 @@ on:
   workflow_call:
     inputs:
       nama-proyek:
-        description: Nama proyek yang sedang diproses
         type: string
         required: true
-
-      jumlah-ulangan:
-        description: Berapa kali pesan diulang
-        type: number
-        required: false
-        default: 1
-
-      pakai-huruf-besar:
-        description: Ubah pesan jadi huruf besar
-        type: boolean
-        required: false
-        default: false
 
 jobs:
   bekerja:
     runs-on: ubuntu-latest
     steps:
-      - name: Tampilkan pesan
-        env:
-          NAMA: ${{ inputs.nama-proyek }}
-          JUMLAH: ${{ inputs.jumlah-ulangan }}
-        run: |
-          for i in $(seq 1 "$JUMLAH"); do
-            echo "Memproses proyek: $NAMA (ulangan ke-$i)"
-          done
-
-      - name: Langkah ini hanya jalan kalau diminta
-        if: inputs.pakai-huruf-besar
-        env:
-          NAMA: ${{ inputs.nama-proyek }}
-        run: |
-          echo "$NAMA" | tr '[:lower:]' '[:upper:]'
+      - uses: actions/checkout@v99
+      - run: echo "${{ inputs.nama-proyek }}"
