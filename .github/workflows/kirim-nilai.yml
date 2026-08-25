@@ -1,0 +1,24 @@
+name: Kirim Nilai Antar Job
+
+on: workflow_dispatch
+
+jobs:
+  penghitung:
+    runs-on: ubuntu-latest
+    outputs:
+      hasil: ${{ steps.hitung.outputs.angka }}
+    steps:
+      - name: Hitung sesuatu
+        id: hitung
+        run: |
+          ANGKA=$(( 7 * 6 ))
+          echo "Hasil hitungan: $ANGKA"
+          echo "angka=$ANGKA" >> "$GITHUB_OUTPUT"
+
+  penerima:
+    needs: penghitung
+    runs-on: ubuntu-latest
+    steps:
+      - name: Terima nilainya
+        run: |
+          echo "Job sebelumnya mengirim: ${{ needs.penghitung.outputs.hasil }}"
