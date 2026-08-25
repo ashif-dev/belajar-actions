@@ -6,16 +6,11 @@ jobs:
   menyapa:
     runs-on: ubuntu-latest
     steps:
-      - name: Langkah satu
-        run: echo "Ini dikerjakan pertama"
+      - name: Sebelum mengambil kode
+        run: ls -la
 
-      - name: Langkah dua
-        run: echo "Ini dikerjakan kedua"
+      - name: Ambil kode dari repositori
+        uses: actions/checkout@v4
 
-      - name: Lihat kita ada di komputer apa
-        run: |
-          echo "Nama komputer: $(hostname)"
-          echo "Sistem operasi:"
-          cat /etc/os-release | head -2
-          echo "Isi folder saat ini:"
-          ls -la
+      - name: Sesudah mengambil kode
+        run: ls -la
